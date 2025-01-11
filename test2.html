@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自动旋转示例</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      /* justify-content: center;
+      align-items: center; */
+      height: 100vh;
+      background-color: #6f5f5fa0;
+    }
+    .rotate-box {
+      width: 70px;
+      height: 0px;
+      background-color: none;
+      color: rgb(255, 255, 255);
+    }
+    #rotate{
+      height: 0px;
+      position: absolute;
+      top: 50%;
+      left: 150px;
+      transform-origin : 4px 0px;
+      transition: transform 0s ease;
+    }
+    #location{
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 50%;
+      left: 150px;
+      transition: transform 0.5s ease;
+    }
+    .circle {
+      width: 25px; /* 圆的直径 */
+      height: 25px;
+      background-color: #FF5722; /* 圆的颜色 */
+      border-radius: 50%; /* 变成圆形 */
+      position: absolute; /* 绝对定位  */
+      top: 0%; /* 垂直居中 */
+      left: 82%; /* 水平放置到长方形尾端 */
+      transform: translateY(-65%); /* 修正圆形中心对齐 */
+    }
+    .circle2 {
+      width: 25px; /* 圆的直径 */
+      height: 25px;
+      background-color: #FF5722; /* 圆的颜色 */
+      border-radius: 50%; /* 变成圆形 */
+      position: absolute; /* 绝对定位 */
+      top: 0%; /* 垂直居中 */
+      left: -12%; /* 水平放置到长方形尾端 */
+      transform: translateY(-50%); /* 修正圆形中心对齐 */
+    }
+    #container{
+      border: 2px solid #2234ff;
+      width: 36px;
+      height: 36px;
+      position: absolute;
+      top: 30.5%;
+      left: 200px;
+    }
+    #container2{
+      border: 2px solid #2234ff;
+      width: 36px;
+      height: 36px;
+      position: absolute;
+      top: 30.5%;
+      left: 135px;
+    }
+    #container3{
+      border: 2px solid #2234ff;
+      width: 36px;
+      height: 36px;
+      position: absolute;
+      top: 30.5%;
+      left: 265px;
+    }
+    #container4{
+      border: 2px solid #2234ff;
+      width: 36px;
+      height: 36px;
+      position: absolute;
+      top: 30.5%;
+      left: 330px;
+    }
+    #container5{
+      border: 2px solid #2234ff;
+      width: 36px;
+      height: 36px;
+      position: absolute;
+      top: 30.5%;
+      left: 395px;
+    }  
+    #container6{
+      border: 2px solid #2234ff;
+      width: 36px;
+      height: 36px;
+      position: absolute;
+      top: 30.5%;
+      left: 70px;
+    }
+  </style>
+</head>
+<body>
+  <div id="location">
+    <div id="container"></div>
+    <div id="container2"></div>
+    <div id="container3"></div>
+    <div id="container4"></div>
+    <div id="container5"></div>
+    <div id="container6"></div>
+    <div id="rotate">
+      <div class="circle2"></div>
+      <div class="rotate-box" id="box"></div>
+      <div class="circle"></div>
+    </div> 
+  </div>
+  <script>
+    let y = 0;
+    let loc_bool = 0;
+    let location_all = 10;
+    const box = document.getElementById("rotate");
+    let angle = 0;
+    let speed = 1; // 默认速度
+    let translateX = location_all;
+    let translateX2 = location_all;
+    function rotate() {
+      angle += 4.5; // 控制旋转速度
+      box.style.transform = `rotate(${angle}deg)`;
+      requestAnimationFrame(rotate); // 保持动画连续
+    }
+    document.onkeydown = function () {
+      loc_bool += 5;
+      angle = -180;
+      translateX += 72; // 每次按键左移 70px
+      translateX2 -= 72;
+      document.getElementById('location').style.left = `${translateX}px`;
+      document.getElementById('location').style.transform = `translateX(${translateX2}px)`;
+    };
+    rotate(); // 开始旋转
+  </script>
+</body>
+</html>
