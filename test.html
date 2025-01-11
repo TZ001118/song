@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>滑动效果</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border: 1px solid #ccc;
+    }
+    .box {
+      position: absolute;
+      top: 0%; /* 初始位置在容器上方 */
+      left: 100px;
+      width: 100%;
+      height: 100%;
+      background-color: #792323;
+      transition: transform 1s ease; /* 滑动速度：1秒 */
+    }
+    .box2 {
+      position: absolute;
+      top: 0%;
+      left: 100%;
+      width: 100%;
+      height: 100%;
+      background-color: #6b18d0;
+      transition: transform 1s ease;
+    }
+    .box.active {
+      transform: translateX(-30px); /* 滑动到容器内部 */
+    }
+    .box2.active {
+      transform: translateX(10%); /* 滑动到容器内部 */
+    }
+    /* #slideButton{
+        width: 100%;
+        height: 100%;
+    } */
+  </style>
+</head>
+<body>
+  <div class="container">
+      <div class="box"></div>
+      <div class="box2"></div>
+  </div>
+
+  <script>
+    const box2 = document.querySelector('.box2');
+
+    document.onkeydown = function () {
+      document.querySelector('.box').classList.toggle('active'); // 切换 active 类实现滑动
+      box2.classList.toggle('active'); // 切换 active 类实现滑动
+    };
+  </script>
+</body>
+</html>
